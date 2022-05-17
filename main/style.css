@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    /* font-family: 'Segoe WP'; */
+    /* font-family: 'Work Sans', sans-serif; */
+    font-family: 'Josefin Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    scroll-behavior: smooth;
+    /* src: local('Segoe WP'), url('https://fonts.cdnfonts.com/s/13139/SegoeWP.woff') format('woff'); */
+
+}
