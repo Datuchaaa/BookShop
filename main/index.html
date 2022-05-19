@@ -37,6 +37,7 @@
                     <li><a class="li nav-link"  href="#">Books</a></li>
                     <li><a class="li nav-link"  href="#">Abot us</a></li>
                     <li><a class="li nav-link"  href="#">Contacts</a></li>
+                    <li><a class="li nav-link" href="#">LOGIN</a></li>
                 </ul>
                 <!-- <div class="hamburger" id="hamburger">
                     <span class="bar"></span>
@@ -46,52 +47,66 @@
             </nav>
         </div>
     </header>
+   
     <section class="slider-section">
         <div class="container">
-            <div class="books-stand" style="background-image: url(./images/details-shell-min-BG.png)">
-                <div class="books">
-                    <div class="book" style="background-image: url(./images/books/img.png)">
-                        <div class="price-order">
-                            <div class="price">7$</div>
-                            <div class="order"><a href="">Add to bag</a></div>
-                            <div class="info"><a href="">Show more</a></div>
-                        </div>
-                    </div>
-                    <div class="book" style="background-image: url(./images/books/book2.png)">
-                        <div class="price-order">
-                            <div class="price">13$</div>
-                            <div class="order"><a href="">Add to bag</a></div>
-                            <div class="info"><a href="">Show more</a></div>
-                        </div>
-                    </div>
-                    <div class="book" style="background-image: url(./images/books/book3.png)">
-                        <div class="price-order">
-                            <div class="price">15$</div>
-                            <div class="order"><a href="">Add to bag</a></div>
-                            <div class="info"><a href="">Show more</a></div>
-                        </div>
-                    </div>
+            <div class="books-stand" style="background-image: url();">
+                <div class="books" id="booksListWrapper">
+             
                 </div>
-
             </div>                          
         </div>
     </section>
-    
-
-
-
-
 
 
     <script>
+
+        // let age = 30;
+
+        // template literal
+        // let sentence = `Im giorgi nucubidze and my age is ${age} and asdasdsd`;
+
+
+        let getBookItem = (obj) => {
+            return `<div class="book" style="background-image: url(./images/books/${obj.imageLink})">
+                        <div class="price-order">
+                            <div class="price">${obj.price}$</div>
+                            <div class="order"><a href="">Add to bag</a></div>
+                            <div class="info"><a href="">show more</a></div>
+                        </div>
+                    </div>`;
+        };  
+
+        let bookList = [1,1,3]; 
+ 
+
+        let getBookList = (bookList) => {
+            return bookList.map((obj)=>{
+                return getBookItem(obj);
+            })
+        }
+
+
+        let booksListWrapper = document.getElementById('booksListWrapper');
+
+
         fetch('books.json') //path to the file with json data
         .then(response => {
             return response.json();
         })
         .then(data => {
+
             console.log(data);
+            booksListWrapper.innerHTML = getBookList(data);
+            
         });
+
+        // console.log('list', getBookList(bookList));
+
+        // console.log('sentence', sentence);
+        
+
     </script>
-     <script src="./script.js"></script>
+     <!-- <script src="./script.js"></script> -->
 
 </body>
