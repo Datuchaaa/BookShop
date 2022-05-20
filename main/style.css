@@ -223,9 +223,10 @@ a{
     background-color: rgba(224, 217, 217, 0.8);
     transition: 0.3s ease;
 }
-.autor{
+.author{
     font-size: 15px;
     padding-bottom: 10px;
+    color: #06759e;
 }
 .title{
     font-size: 18px;
