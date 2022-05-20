@@ -23,17 +23,17 @@
 
 </head> 
 <body>
-
+    
     <!-- HEADER SECTION  start --> 
     <header class="header-section">
         <div class="container">
             
             <nav class="nav-bar">
-                <div class="logo" style="background-image: url(./images/logo.png)">
+                <div class="logo" style="background-image: url(../main/images/logo.png)">
                    
                 </div>
                 <ul class="nav-menu" id="navBar">
-                    <li><a class="li nav-link" href="./index.html">Main</a></li>
+                    <li><a class="li nav-link" href="../main/index.html">Main</a></li>
                     <li><a class="li nav-link"  href="#">Books</a></li>
                     <li><a class="li nav-link"  href="#">Abot us</a></li>
                     <li><a class="li nav-link"  href="#footer">Contacts</a></li>
@@ -48,77 +48,5 @@
             </nav>
         </div>
     </header>
-   
-    <section class="slider-section">
-        <div class="container">
-            <div class="books-stand">
-                <div class="books" id="booksListWrapper">
-                   
-                </div>
-            </div>                          
-        </div>
-    </section>
-    <footer class="footer-section" id="footer">
-        <div class="container">
-            <div class="footer-items">
-                
-            </div>
-        </div>
-    </footer>
-
-
-    <script>
-
-        // let age = 30;
-
-        // template literal
-        // let sentence = `Im giorgi nucubidze and my age is ${age} and asdasdsd`;
-
-
-        let getBookItem = (obj) => {
-            return ` <div class="book" style="background-image: url(./images/books/${obj.imageLink})">
-                        <div class="book-info">
-                            <h3 class="autor">${obj.author}</h3>
-                            <h2 class="title">${obj.title}</h2>
-                        </div>
-                        <div class="price-order">
-                            <div class="price">${obj.price}$</div>
-                            <div class="order"><a href="">Add to Cart</a></div>
-                            <div class="info"><a href="">Show More</a></div>
-                        </div>
-                    </div>`;
-        };  
-
-        // let bookList = [1,1,3]; 
- 
-
-        let getBookList = (bookList) => {
-            return bookList.map((obj)=>{
-                return getBookItem(obj);
-            }).join('')
-        }
-
-
-        let booksListWrapper = document.getElementById('booksListWrapper');
-
-
-        fetch('books.json') //path to the file with json data
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-
-            // console.log(data);
-            booksListWrapper.innerHTML = getBookList(data);
-            
-        });
-
-        // console.log('list', getBookList(bookList));
-
-        // console.log('sentence', sentence);
-        
-
-    </script>
-     <!-- <script src="./script.js"></script> -->
 
 </body>
