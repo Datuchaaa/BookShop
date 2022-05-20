@@ -53,7 +53,7 @@
         <div class="container">
             <div class="books-stand">
                 <div class="books" id="booksListWrapper">
-             
+                   
                 </div>
             </div>                          
         </div>
@@ -69,11 +69,15 @@
 
 
         let getBookItem = (obj) => {
-            return `<div class="book" style="background-image: url(./images/books/${obj.imageLink})">
+            return ` <div class="book" style="background-image: url(./images/books/${obj.imageLink})">
+                        <div class="book-info">
+                            <h3 class="autor">${obj.author}</h3>
+                            <h2 class="title">${obj.title}</h2>
+                        </div>
                         <div class="price-order">
                             <div class="price">${obj.price}$</div>
-                            <div class="order"><a href="">Add to bag</a></div>
-                            <div class="info"><a href="">show more</a></div>
+                            <div class="order"><a href="">Add to Cart</a></div>
+                            <div class="info"><a href="">Show More</a></div>
                         </div>
                     </div>`;
         };  
@@ -84,7 +88,7 @@
         let getBookList = (bookList) => {
             return bookList.map((obj)=>{
                 return getBookItem(obj);
-            })
+            }).join('')
         }
 
 
@@ -97,7 +101,7 @@
         })
         .then(data => {
 
-            console.log(data);
+            // console.log(data);
             booksListWrapper.innerHTML = getBookList(data);
             
         });
