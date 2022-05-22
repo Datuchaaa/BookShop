@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>BookShop</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./img/title.png">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="http://reactstorefronts.com/static/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <link rel="stylesheet" href="./slick-1.8.1/slick/slick.css">
+    <link rel="stylesheet" href="./slick-1.8.1/slick/slick-theme.css">
+    <link href="http://fonts.cdnfonts.com/css/segoe-wp" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Work+Sans:ital@1&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/42432c60fd.js" crossorigin="anonymous"></script>
+    
+    
+
+</head> 
+<body>
+    
+    <!-- HEADER SECTION  start --> 
+    <header class="header-section">
+        <div class="container">
+            
+            <nav class="nav-bar">
+                <div class="logo" style="background-image: url(../main/images/logo.png)">
+                   
+                </div>
+                <ul class="nav-menu" id="navBar">
+                    <li><a class="li nav-link" href="../main/index.html">Main</a></li>
+                    <li><a class="li nav-link"  href="#">Books</a></li>
+                    <li><a class="li nav-link"  href="#">Abot us</a></li>
+                    <li><a class="li nav-link"  href="#footer">Contacts</a></li>
+                    <li><a class="li nav-link" href="#"><i class="fa-solid fa-user"></i>Login</a></li>
+                    <li><a class="li nav-link" id="curtIcon" href="#"><i class="fa-solid fa-cart-shopping"></i>Curt</a></li>
+                    <div class="curt" id="curt">
+                        <p>No Items</p>
+                        <div class="booksincurt">
+                            <!-- <div class="book"></div> -->
+                        </div>
+                        <div class="gotocheckout">
+                            <a href="../checkout/index.html"><p>Go To Checkout</p></a>
+                        </div>
+                    </div>
+                </ul>
+                
+                <!-- <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div> -->
+            </nav>
+        </div>
+    </header>
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkoutform">
+                <div class="checkout-info">
+                    <div class="user-info-head"><h4>Billing Adress</h4></div>
+                    <div class="user-info-wrapper">
+                        <p>First Name</p>
+                        <input type="text" placeholder="Fist Name" name="Fist Name" id="">
+                        <p>Last Name</p>
+                        <input type="text" placeholder="Last Name" name="Last Name" id="">
+                        <p>Delivery Date</p>
+                        <input type="date" id="date">
+                        <p>Delivery Adress</p>
+                        <input type="adress" placeholder="Delivery Adress" id="adress">
+                    </div>
+                </div>
+                <div class="payment-method">
+                    <div class="payment-method-head">
+                        <h4>Payment Method</h4>
+                        <div class="payment-method-wrapper">
+                            <div class="radio-wrapper">
+                            <input type="radio">
+                            <p>Credit Card</p>
+                            </div>
+                            <div class="radio-wrapper">
+                                <input type="radio">
+                                <p>Credit Card</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payment-method-head">
+                        <h4>Choose 2 Gift</h4>
+                        <div class="payment-method-wrapper">
+                            <div class="radio-wrapper">
+                            <input type="checkbox" name="" id="">
+                            <p for="">Pack as a gift</p>
+                            </div>
+                            <div class="radio-wrapper">
+                                <input type="checkbox">
+                                <p for="credit">Add postcard</p>
+                            </div>
+                            <div class="radio-wrapper">
+                                <input type="checkbox">
+                                <p for="credit">Provide 2% discount to the next time</p>
+                            </div>
+                            <div class="radio-wrapper">
+                                <input type="checkbox">
+                                <p for="credit">Branded pen or pencil</p>
+                            </div>
+                        </div>
+                        <div class="checkout-btn">
+                            <h4>Continue to Checkout</h4>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        
+    </section>
+    <footer class="footer-section" id="footer">
+        <div class="container">
+            <div class="footer-items">
+                
+            </div>
+        </div>
+    </footer>
+
+
+  
+     <script src="../main/script.js"></script>
+
+</body>
