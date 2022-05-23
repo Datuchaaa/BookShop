@@ -41,8 +41,8 @@
     top: 40%;
     position: fixed;
     border-radius: 5px;
-    width: 500px;
-    height: 300px;
+    width: 350px;
+    height: 200px;
     background-color: #E1E0DC;
     display: flex;
     justify-content: right;
@@ -209,6 +209,10 @@
     cursor: pointer;
     margin: 32px;
 
+}
+.description{
+    text-align: center;
+    align-self: center;
 }
 .price-order{
     position: absolute;

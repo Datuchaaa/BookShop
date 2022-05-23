@@ -8,6 +8,12 @@ curtShow.addEventListener("click",() =>{
     
 });
 
+const sliderSection = document.getElementById("slider-section")
+sliderSection.addEventListener("click", () =>{
+    curt.style.display = "none"
+});
+
+
 
 
 
@@ -33,6 +39,11 @@ curtShow.addEventListener("click",() =>{
                     </div>`;
                     
         };  
+
+        let getBookdescription = (obj) =>{
+            return `  <div class="description">${obj.description}</div>  `
+           
+        };
 
         // let bookList = [1,1,3]; 
  
@@ -63,15 +74,20 @@ curtShow.addEventListener("click",() =>{
             const popUp = document.getElementById("popup");
 
             showMore.addEventListener("click", () =>{
-                popUp.style.display = "block" 
+                popUp.style.display = "flex" 
                   });
-            });
 
-            const xIcon = document.getElementById("X-icon");
-            xIcon.addEventListener("click", () =>{
+                const xIcon = document.getElementById("X-icon");
+                xIcon.addEventListener("click", () =>{
                 popUp.style.display = "none"
             });
 
+
+           
+
+            });
+
+            
 
         // console.log('list', getBookList(bookList));
 
