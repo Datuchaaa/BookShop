@@ -74,7 +74,7 @@ function renderCards(){
 }
 
 
-renderCards();
+// renderCards();
 
 
 fetch('books.json') //path to the file with json data
