@@ -4,14 +4,17 @@ console.log(curtShow);
 const curt = document.getElementById("curt")
 
 curtShow.addEventListener("click", () => {
+    
     curt.style.display = "block"
+    
 
 });
 
-const sliderSection = document.getElementById("slider-section")
-sliderSection.addEventListener("click", () => {
-    curt.style.display = "none"
-});
+
+// const sliderSection = document.getElementById("slider-section")
+// sliderSection.addEventListener("click", () => {
+//     curt.style.display = "none"
+// });
 
 
 
@@ -26,24 +29,25 @@ sliderSection.addEventListener("click", () => {
 
 
 let getBookItem = (obj) => {
-    return ` <div class="book" style="background-image: url(./images/books/${obj.imageLink})">
-                        <div class="book-info">
-                            <h3 class="author">${obj.author}</h3>
-                            <h2 class="title">${obj.title}</h2>
-                        </div>
-                        <div class="price-order">
-                            <div class="price">${obj.price}$</div>
-                            <div class="order" data-title="${obj.title}" ><a>Add to Cart</a></div>
-                            <div class="info" data-desc="${obj.description}" id="info"><a>Show More</a></div>
-                        </div>
-                    </div>`;
+    return `  <div class="book" style="background-image: url(./images/books/${obj.imageLink})">
+                <div class="remove-book"><i class="fa-solid fa-circle-minus"></i></div>
+                <div class="book-info">
+                    <h3 class="author">${obj.author}</h3>
+                    <h2 class="title">${obj.title}</h2>
+                </div>
+                <div class="price-order">
+                    <div class="price">${obj.price}$</div>
+                    <div class="order" data-title="${obj.title}" ><a>Add to Cart</a></div>
+                    <div class="info" data-desc="${obj.description}" id="info"><a>Show More</a></div>
+                </div>
+            </div>`;
 
 };
 
-let getBookdescription = (obj) => {
-    return `  <div class="description">${obj.description}</div>  `
+// let getBookdescription = (obj) => {
+//     return `  <div class="description">${obj.description}</div>  `
 
-};
+// };
 
 // let bookList = [1,1,3]; 
 
@@ -65,9 +69,11 @@ var showDetails = (obj) => {
 function renderCards(){
   let currentCards = JSON.parse(localStorage.getItem('cards'));
 
-  let orderList = currentCards.map((text)=>{
-      return `<div class="text"> ${text}</div>`
-  })
+  let orderList = currentCards.map((title)=>{
+      return `<div class="title"> ${title}</div>
+      `
+       
+  }).join('------------------');
 
   document.getElementById('cardList').innerHTML = orderList;
 
