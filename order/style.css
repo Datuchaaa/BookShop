@@ -243,6 +243,10 @@ a{
     background-color: rgb(137, 230, 137);
     transition: 200ms ease-in-out;
 }
+.total-price-order{
+    margin-top: 40px;
+    font-size: 3rem;
+}
 .checkout-btn:hover{
     background-color: #2bec55;
 }

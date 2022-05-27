@@ -22,22 +22,27 @@ curtShow.addEventListener("click", () => {
 
 
 
-// let age = 30;
 
-// template literal
-// let sentence = `Im giorgi nucubidze and my age is ${age} and asdasdsd`;
 
 
 let getBookItem = (obj) => {
     return `  <div class="book" style="background-image: url(./images/books/${obj.imageLink})">
-                <div class="remove-book"><i class="fa-solid fa-circle-minus"></i></div>
+                
                 <div class="book-info">
                     <h3 class="author">${obj.author}</h3>
                     <h2 class="title">${obj.title}</h2>
                 </div>
                 <div class="price-order">
                     <div class="price">${obj.price}$</div>
-                    <div class="order" data-title="${obj.title}" ><a>Add to Cart</a></div>
+                    <div 
+                     class="order" 
+                     data-price="${obj.price}" 
+                     data-image="${obj.imageLink}" 
+                     data-title="${obj.title}" >
+                        <a>
+                            Add to Cart
+                        </a>
+                    </div>
                     <div class="info" data-desc="${obj.description}" id="info"><a>Show More</a></div>
                 </div>
             </div>`;
@@ -67,20 +72,86 @@ var showDetails = (obj) => {
 
 
 function renderCards(){
-  let currentCards = JSON.parse(localStorage.getItem('cards'));
 
-  let orderList = currentCards.map((title)=>{
-      return `<div class="title"> ${title}</div>
-      `
-       
-  }).join('------------------');
+  const currentCards = JSON.parse(localStorage.getItem('cards')) || [];
+   
+  let _sum = 0;
+  for (let book of currentCards) {
+    _sum = _sum + parseInt(book.price);
+  }
 
-  document.getElementById('cardList').innerHTML = orderList;
+
+  const priceValue = document.getElementById('priceValue');
+  priceValue.innerHTML = _sum;
+
+  renderOrders(currentCards);
+
+}
+
+function renderOrders(list){
+     let  orderList = null;
+     orderList = list.map((book)=>{
+        return `
+          <div class="booksWrapperInCard">
+              <div class="title titleInCurt"> ${book.title}</div>
+              <img class= "book curtbook" src='./images/books/${book.image}'/>
+              <div class="remove-book" data-title="${book.title}">
+                  <i class="fa-solid fa-circle-minus"></i>
+              </div>
+              <div class="title"> 
+                  ${book.price} $ 
+              </div>
+          </div>
+        `
+    }).join('--------------------------------------------');
+  
+    document.getElementById('cardList').innerHTML = orderList;
+
+    removeBooks();
 
 }
 
 
-// renderCards();
+
+
+function removeBooks(){
+    
+    let removeBooks= document.getElementsByClassName("remove-book");
+
+    console.log('removeBooks', removeBooks);
+
+    for (let element of removeBooks){
+
+        element.addEventListener('click', (e) => {
+
+            let title =  e.currentTarget.getAttribute('data-title');
+    
+            let currentCards = JSON.parse(localStorage.getItem('cards'));
+
+            let filteredList = currentCards.filter((item)=>{
+                return item.title !== title;
+            })
+
+            localStorage.clear();
+
+            localStorage.setItem('cards',  JSON.stringify(filteredList));
+
+            const items = JSON.parse(localStorage.getItem('cards')) || [];
+
+            console.log(' renderOrders filteredList',filteredList);
+
+            renderOrders(items);
+            
+            console.log('title', title);
+            
+            renderCards();
+    
+        })
+    }
+}
+
+
+
 
 
 fetch('books.json') //path to the file with json data
@@ -118,15 +189,21 @@ fetch('books.json') //path to the file with json data
  
             orders[i].addEventListener("click", (e) => {
                 // currentCards = JSON.parse(localStorage.getItem('cards'));
+                let book = {};
+                book['title'] =  e.currentTarget.getAttribute('data-title');
+                book['image']  =  e.currentTarget.getAttribute('data-image');
+                book['price'] =  e.currentTarget.getAttribute('data-price');
 
-                let title =  e.currentTarget.getAttribute('data-title');
-
-                currentCards.push(title);
+                currentCards.push(book);
     
                 localStorage.setItem('cards', JSON.stringify(currentCards));
 
                 renderCards();
+
+              
             });
+
+           
          }
 
 
