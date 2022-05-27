@@ -241,13 +241,25 @@
     margin: 32px;
 
 }
-.remove-book{
-    position: absolute;
-    right: -10px;
-    display: none;
-    color: red;
-
+/*IN CURT ITEMS STYLE*/
+.curtbook{
+    width: 70px;
+    height: 100px;
+    margin: 10px;
 }
+
+.booksincurt .title {
+    font-size: 14px;
+}
+
+.fa-circle-minus{
+    color: red;
+    position: absolute;
+    cursor: pointer;
+}
+
+/*IN CURT ITEMS STYLE*/
+
 .description{
     text-align: center;
     align-self: center;
