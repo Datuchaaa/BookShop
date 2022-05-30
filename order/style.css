@@ -285,3 +285,17 @@ input{
     background-color: #81817e;
     
 }
+
+
+.msg{
+    display: none;
+    color: red;
+}
+
+.error input{
+    border: 1px solid red;
+}
+
+.error .msg{
+    display: block;
+}

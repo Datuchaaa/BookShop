@@ -64,14 +64,30 @@
                 <div class="checkout-info">
                     <div class="user-info-head"><h4>Billing Adress</h4></div>
                     <div class="user-info-wrapper">
-                        <p>First Name</p>
-                        <input type="text" placeholder="Fist Name" name="Fist Name" id="">
-                        <p>Last Name</p>
-                        <input type="text" placeholder="Last Name" name="Last Name" id="">
-                        <p>Delivery Date</p>
-                        <input type="date" id="date">
-                        <p>Delivery Adress</p>
-                        <input type="adress" placeholder="Delivery Adress" id="adress">
+
+                        <div class="input-wrapper">
+                            <p>First Name</p>
+                            <input type="text" placeholder="Fist Name" class="input" name="Fist Name" id="firstName">
+                            <span class="msg">please enter value</span>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <p>Last Name</p>
+                            <input type="text" placeholder="Last Name" class="input" name="Last Name" id="lastName">
+                            <span class="msg">please enter value</span>
+                        </div> 
+                        
+                        <div class="input-wrapper">
+                            <p>Delivery Date</p>
+                            <input type="date" class="input" id="date">
+                            <span class="msg">please enter value</span>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <p>Delivery Adress</p>
+                            <input type="adress" class="input" placeholder="Delivery Adress" id="adress">
+                            <span class="msg">please enter value</span>
+                        </div>
                         <!-- <div class="total-price total-price-order">
                             <p>Total Price: <span id="priceValue"> price </span> $</p>
                         </div> -->
@@ -87,7 +103,7 @@
                             </div>
                             <div class="radio-wrapper">
                                 <input class="radio" name="card" type="radio">
-                                <p>Credit Card</p>
+                                <p>Debet Card</p>
                             </div>
                         </div>
                     </div>
@@ -111,7 +127,7 @@
                                 <p for="credit">Branded pen or pencil</p>
                             </div>
                         </div>
-                        <div class="checkout-btn">
+                        <div class="checkout-btn" id="checkout">
                             <h4>Continue to Checkout</h4>
                         </div>
                     </div>
@@ -134,6 +150,63 @@
 
 
   
-     <script src="../main/script.js"></script>
+    <script>
+
+
+        function  checkInput(){
+            const inputs = document.getElementsByClassName('input');
+
+            for (let node of inputs) {
+
+                node.parentElement.classList.remove('error');
+
+                if (node.value === '' ) {
+                    node.parentElement.classList.add('error');
+                }
+
+            }
+        }   
+
+        let checkout = document.getElementById('checkout');
+
+        checkout.addEventListener('click', ()=>{
+            checkInput();
+        })
+
+
+        let checkboxes = document.getElementsByClassName('checkbox');
+
+        function changeCheckBoxState(state) {
+            for (let checkbox of checkboxes){
+               if (!checkbox.checked) {
+                   checkbox.disabled = state;
+               }
+            }
+        }
+
+        function checkCheckBox(e){
+            let countChecked = 0;
+            for (let checkbox of checkboxes){
+               if (checkbox.checked) countChecked ++;
+
+               if (countChecked === 2) {
+                    changeCheckBoxState(true);
+               } else {
+                    changeCheckBoxState(false);
+               }
+            }
+        }
+
+        for (let elem of checkboxes){
+            elem.addEventListener('change', (e)=>{
+                checkCheckBox(e);
+            })
+        }
+        
+
+
+
+
+    </script>
 
 </body>

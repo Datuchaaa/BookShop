@@ -18,13 +18,6 @@ curtShow.addEventListener("click", () => {
 
 
 
-
-
-
-
-
-
-
 let getBookItem = (obj) => {
     return `  <div class="book" style="background-image: url(./images/books/${obj.imageLink})">
                 
@@ -38,7 +31,7 @@ let getBookItem = (obj) => {
                      class="order" 
                      data-price="${obj.price}" 
                      data-image="${obj.imageLink}" 
-                     data-title="${obj.title}" >
+                     data-title="${obj.title}" data-id="${obj.id}">
                         <a>
                             Add to Cart
                         </a>
@@ -88,14 +81,16 @@ function renderCards(){
 
 }
 
-function renderOrders(list){
-     let  orderList = null;
-     orderList = list.map((book)=>{
+function renderOrders(){
+   
+    const items = JSON.parse(localStorage.getItem('cards')) || [];
+   
+     orderList = items.map((book)=>{
         return `
           <div class="booksWrapperInCard">
               <div class="title titleInCurt"> ${book.title}</div>
               <img class= "book curtbook" src='./images/books/${book.image}'/>
-              <div class="remove-book" data-title="${book.title}">
+              <div class="remove-book" data-id="${book.id}">
                   <i class="fa-solid fa-circle-minus"></i>
               </div>
               <div class="title"> 
@@ -107,42 +102,37 @@ function renderOrders(list){
   
     document.getElementById('cardList').innerHTML = orderList;
 
+   
     removeBooks();
-
 }
 
 
+// renderCards();
 
 
 function removeBooks(){
     
     let removeBooks= document.getElementsByClassName("remove-book");
 
-    console.log('removeBooks', removeBooks);
-
     for (let element of removeBooks){
 
         element.addEventListener('click', (e) => {
 
-            let title =  e.currentTarget.getAttribute('data-title');
+          
+
+            let id =  e.currentTarget.getAttribute('data-id');
     
             let currentCards = JSON.parse(localStorage.getItem('cards'));
 
             let filteredList = currentCards.filter((item)=>{
-                return item.title !== title;
+                return item.id !== id;
             })
 
             localStorage.clear();
 
             localStorage.setItem('cards',  JSON.stringify(filteredList));
 
-            const items = JSON.parse(localStorage.getItem('cards')) || [];
-
-            console.log(' renderOrders filteredList',filteredList);
-
-            renderOrders(items);
-            
-            console.log('title', title);
+            renderOrders();
             
             renderCards();
     
@@ -193,20 +183,20 @@ fetch('books.json') //path to the file with json data
                 book['title'] =  e.currentTarget.getAttribute('data-title');
                 book['image']  =  e.currentTarget.getAttribute('data-image');
                 book['price'] =  e.currentTarget.getAttribute('data-price');
+                book['id'] =  e.currentTarget.getAttribute('data-id');
 
                 currentCards.push(book);
     
                 localStorage.setItem('cards', JSON.stringify(currentCards));
-
                 renderCards();
-
               
             });
-
            
          }
 
+         renderCards();
 
+        
  
 
         const xIcon = document.getElementById("X-icon");
